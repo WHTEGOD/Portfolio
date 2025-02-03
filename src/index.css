@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: "Inter", sans-serif;
+  background: #000000;
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+.animate-typing {
+  animation: typing 3s steps(50) infinite;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+@layer utilities {
+  .bg-sandy-white {
+    background: rgba(255, 255, 255, 0.85); /* Semi-transparent white */
+    background-image: radial-gradient(rgba(200, 200, 200, 0.4) 1px, transparent 1px);
+    background-size: 10px 10px; /* Adjust size for texture effect */
+  }
+}
