@@ -12,7 +12,7 @@ const childVariants = {
     visible: { opacity: 1, x: 0, transition: { duration: 0.5 } }
 };
 
-const Hero = () => {
+const Hero = ({ isDarkMode }) => {
     const [text, setText] = useState("Pulkit Tiwari");
     const nameRef = useRef(null);
     const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -69,14 +69,27 @@ const Hero = () => {
     }, []);
 
     return (
-        <div id="Hero" className="mt-12 mb-12 px-6 lg:px-12 text-white">
+        <div id="Hero" className="mt-12 mb-12 px-6 lg:px-12">
             <div id="intro" className="pb-4 lg:mb-36">
-                <div className="flex flex-wrap lg:flex-row-reverse">
-                    <div className="w-full lg:w-1/2">
+                <div className="flex flex-wrap lg:flex-nowrap items-center">
+                    {/* Profile Picture - Adjusted Positioning */}
+                    <div className="w-full lg:w-3/4 flex justify-center lg:justify-start">
+                        <motion.img
+                            src={Profile}
+                            alt="Profile Picture"
+                            className="rounded-lg shadow-lg w-3/4 lg:w-1/2"
+                            initial={{ opacity: 0, x: 100 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 1, delay: 1.5 }}
+                        />
+                    </div>
+
+                    {/* Text Section */}
+                    <div className="w-full lg:w-2/3">
                         <div className="text-4xl lg:text-6xl font-bold">
                             <h1
                                 ref={nameRef}
-                                className="text-white"
+                                className={`${isDarkMode ? "text-white" : "text-black"}`}
                                 style={{ display: "inline-block" }}
                             >
                                 {text}
@@ -84,24 +97,33 @@ const Hero = () => {
                         </div>
                         <motion.div
                             initial="hidden"
-                            whileInView="visible" // This triggers the animation when the element is in the viewport
+                            whileInView="visible"
                             variants={containerVariants}
-                            viewport={{ once: true }} // Once per view
+                            viewport={{ once: true }}
                         >
                             <div className="text-2xl lg:text-4xl font-semibold">
                                 <motion.span
                                     variants={childVariants}
-                                    className="bg-gradient-to-r from-stone-300 to-stone-600 bg-clip-text text-3xl tracking-tight text-transparent"
+                                    className={`bg-gradient-to-r ${
+                                        isDarkMode
+                                            ? "from-stone-300 to-stone-600"
+                                            : "from-black to-gray-700"
+                                    } bg-clip-text text-3xl tracking-tight text-transparent`}
                                 >
                                     I'm a Full Stack Developer 
-
                                 </motion.span>
                             </div>
                             <div className="text-lg lg:text-xl font-light">
-                                <motion.p variants={childVariants} className="text-stone-300">
+                                <motion.p
+                                    variants={childVariants}
+                                    className={`${isDarkMode ? "text-stone-300" : "text-gray-700"}`}
+                                >
                                     I'm a Full Stack Developer based in India. I have a passion for web development and love to create new things.
                                 </motion.p>
-                                <motion.p variants={childVariants} className="text-stone-300 mt-2">
+                                <motion.p
+                                    variants={childVariants}
+                                    className={`${isDarkMode ? "text-stone-300" : "text-gray-700"} mt-2`}
+                                >
                                     I am also passionate about Cybersecurity, constantly learning and implementing best practices to ensure the security and integrity of web applications.
                                 </motion.p>
                             </div>
@@ -110,22 +132,16 @@ const Hero = () => {
                                     variants={childVariants}
                                     href="/assets/Projects/Pulkit_Tiwari_Resume.pdf"
                                     download="Pulkit_Tiwari_Resume.pdf"
-                                    className="px-4 py-2 bg-stone-300 text-black font-semibold rounded-md"
+                                    className={`px-4 py-2 font-semibold rounded-md transition-all ${
+                                        isDarkMode
+                                            ? "bg-stone-300 text-black hover:bg-stone-400"
+                                            : "bg-black text-white hover:bg-gray-800"
+                                    }`}
                                 >
                                     Download Resume
                                 </motion.a>
                             </div>
                         </motion.div>
-                    </div>
-                    <div className="w-full lg:w-1/2 flex justify-center lg:justify-start mt-4 lg:mt-0">
-                        <motion.img
-                            src={Profile}
-                            alt="Profile Picture"
-                            className="rounded-lg shadow-lg w-3/4 lg:w-3/4"
-                            initial={{ opacity: 0, x: 100 }}
-                            whileInView={{ opacity: 1, x: 0 }} // Trigger when in view
-                            transition={{ duration: 1, delay: 1.5 }}
-                        />
                     </div>
                 </div>
             </div>

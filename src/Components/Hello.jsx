@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-scroll"; // Import the Link component from react-scroll
 
-const Hello = () => {
+const Hello = ({ isDarkMode }) => {
     const greetings = [
         "Hello",       // English
         "Hola",        // Spanish
@@ -9,6 +9,10 @@ const Hello = () => {
         "こんにちは",   // Japanese
         "नमस्ते",       // Hindi
         "مرحبا",       // Arabic
+        "Hallo",       // German
+        "Ciao",        // Italian
+        "안녕하세요",    // Korean
+        "Привет",      // Russian
     ];
 
     const [currentGreeting, setCurrentGreeting] = useState(greetings[0]);
@@ -39,7 +43,11 @@ const Hello = () => {
                             duration={500} // Duration of the scroll animation
                         >
                             <div className="text-container">
-                                <h1 className="text-6xl font-bold text-white  overflow-hidden text-center cursor-pointer whitespace-nowrap">
+                                <h1 
+                                    className={`text-6xl font-bold transition-all duration-500 text-center cursor-pointer whitespace-nowrap ${
+                                        isDarkMode ? "text-white" : "text-black"
+                                    }`}
+                                >
                                     {currentGreeting}
                                 </h1>
                             </div>

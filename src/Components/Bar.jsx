@@ -1,4 +1,7 @@
-const SidebarNavbar = () => {
+import React from "react";
+import { FaSun, FaMoon } from "react-icons/fa";
+
+const SidebarNavbar = ({ toggleTheme, isDarkMode }) => {
   const styles = {
     sideNavbar: {
       display: "flex",
@@ -11,31 +14,40 @@ const SidebarNavbar = () => {
       bottom: 0,
       width: "80px",
       padding: "20px 0",
+      backgroundColor: isDarkMode ? "#000" : "#fff",
+      transition: "background 0.3s ease",
     },
     logo: {
       fontSize: "36px",
       fontWeight: "bold",
-      color: "#fff",
+      color: isDarkMode ? "#fff" : "#000",
       marginBottom: "10px",
-      
     },
     navLinks: {
       display: "flex",
       flexDirection: "column",
       gap: "5px",
-      marginBottom:"500px",
+      marginBottom: "500px",
       paddingLeft: "50px",
     },
     navLink: {
       textDecoration: "none",
       fontSize: "14px",
-      color: "#aaa",
+      color: isDarkMode ? "#aaa" : "#555",
       opacity: 0.7,
       transition: "all 0.3s ease",
     },
     navLinkHover: {
-      color: "#fff",
+      color: isDarkMode ? "#fff" : "#000",
       opacity: 1,
+    },
+    toggleButton: {
+      background: "none",
+      border: "none",
+      cursor: "pointer",
+      fontSize: "24px",
+      color: isDarkMode ? "#fff" : "#000",
+      transition: "color 0.3s ease",
     },
   };
 
@@ -67,6 +79,9 @@ const SidebarNavbar = () => {
           </a>
         ))}
       </nav>
+      <button onClick={toggleTheme} style={styles.toggleButton}>
+        {isDarkMode ? <FaSun /> : <FaMoon />}
+      </button>
     </div>
   );
 };
