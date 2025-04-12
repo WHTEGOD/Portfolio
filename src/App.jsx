@@ -6,6 +6,7 @@ import Hello from "./Components/Hello";
 import Hero from "./Components/Hero";
 import Projects from "./Components/Projects";
 import Technologies from "./Components/Technologies";
+import AboutMe from "./Components/Aboutme";
 
 export default function App() {
   const [isDarkMode, setIsDarkMode] = useState(true);
@@ -32,10 +33,12 @@ export default function App() {
         <SidebarNavbar toggleTheme={toggleTheme} isDarkMode={isDarkMode} />
         <Hello isDarkMode={isDarkMode} />
         <Hero isDarkMode={isDarkMode} />
+        <AboutMe isDarkMode={isDarkMode} />
         <Technologies isDarkMode={isDarkMode} />
         <Projects isDarkMode={isDarkMode} />
         <Experience isDarkMode={isDarkMode} />
         <Contacts isDarkMode={isDarkMode} />
+        
       </div>
     </div>
   );

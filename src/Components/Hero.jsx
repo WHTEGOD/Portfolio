@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
-import Profile from "../assets/Profile.png";
+import Profile from "../assets/Profile.jpg";
 import { motion } from "framer-motion";
 
 const containerVariants = {
@@ -18,7 +18,6 @@ const Hero = ({ isDarkMode }) => {
     const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     const originalText = "Pulkit Tiwari";
 
-    // Randomize text effect
     useEffect(() => {
         let interval = null;
 
@@ -27,34 +26,26 @@ const Hero = ({ isDarkMode }) => {
             clearInterval(interval);
 
             interval = setInterval(() => {
-                setText(() => {
-                    return originalText
+                setText(() =>
+                    originalText
                         .split("")
-                        .map((char, index) => {
-                            if (index < iteration) {
-                                return originalText[index]; // Gradually fix letters
-                            }
-                            return letters[Math.floor(Math.random() * 26)]; // Random letters
-                        })
-                        .join("");
-                });
+                        .map((char, index) =>
+                            index < iteration
+                                ? originalText[index]
+                                : letters[Math.floor(Math.random() * 26)]
+                        )
+                        .join("")
+                );
 
                 iteration += 1;
-
-                // Gradually slow down the animation
-                if (iteration > originalText.length) {
-                    clearInterval(interval);
-                }
-            }, 20 + iteration * 5); // Increment delay for smoother finish
+                if (iteration > originalText.length) clearInterval(interval);
+            }, 20 + iteration * 5);
         };
 
-        const handleMouseOver = () => {
-            randomizeText();
-        };
-
+        const handleMouseOver = () => randomizeText();
         const handleMouseOut = () => {
             clearInterval(interval);
-            setText(originalText); // Reset to original text
+            setText(originalText);
         };
 
         const nameElement = nameRef.current;
@@ -69,24 +60,12 @@ const Hero = ({ isDarkMode }) => {
     }, []);
 
     return (
-        <div id="Hero" className="mt-12 mb-12 px-6 lg:px-12">
+        <div id="Hero" className="mt-10 mb-10 px-4 sm:px-6 md:px-10 lg:px-12">
             <div id="intro" className="pb-4 lg:mb-36">
-                <div className="flex flex-wrap lg:flex-nowrap items-center">
-                    {/* Profile Picture - Adjusted Positioning */}
-                    <div className="w-full lg:w-3/4 flex justify-center lg:justify-start">
-                        <motion.img
-                            src={Profile}
-                            alt="Profile Picture"
-                            className="rounded-lg shadow-lg w-3/4 lg:w-1/2"
-                            initial={{ opacity: 0, x: 100 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            transition={{ duration: 1, delay: 1.5 }}
-                        />
-                    </div>
-
+                <div className="flex flex-col-reverse lg:flex-row items-center gap-8">
                     {/* Text Section */}
-                    <div className="w-full lg:w-2/3">
-                        <div className="text-4xl lg:text-6xl font-bold">
+                    <div className="w-full lg:w-2/3 text-center lg:text-left">
+                        <div className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold">
                             <h1
                                 ref={nameRef}
                                 className={`${isDarkMode ? "text-white" : "text-black"}`}
@@ -101,33 +80,40 @@ const Hero = ({ isDarkMode }) => {
                             variants={containerVariants}
                             viewport={{ once: true }}
                         >
-                            <div className="text-2xl lg:text-4xl font-semibold">
+                            <div className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold mt-2">
                                 <motion.span
                                     variants={childVariants}
                                     className={`bg-gradient-to-r ${
                                         isDarkMode
                                             ? "from-stone-300 to-stone-600"
                                             : "from-black to-gray-700"
-                                    } bg-clip-text text-3xl tracking-tight text-transparent`}
+                                    } bg-clip-text text-transparent`}
                                 >
-                                    I'm a Full Stack Developer 
+                                    I'm a Full Stack Developer
                                 </motion.span>
                             </div>
-                            <div className="text-lg lg:text-xl font-light">
+                            <div className="text-base sm:text-lg md:text-xl font-light mt-3 px-2 sm:px-0">
                                 <motion.p
                                     variants={childVariants}
-                                    className={`${isDarkMode ? "text-stone-300" : "text-gray-700"}`}
+                                    className={`${
+                                        isDarkMode ? "text-stone-300" : "text-gray-700"
+                                    }`}
                                 >
-                                    I'm a Full Stack Developer based in India. I have a passion for web development and love to create new things.
+                                    I'm a Full Stack Developer based in India. I have a passion for web
+                                    development and love to create new things.
                                 </motion.p>
                                 <motion.p
                                     variants={childVariants}
-                                    className={`${isDarkMode ? "text-stone-300" : "text-gray-700"} mt-2`}
+                                    className={`${
+                                        isDarkMode ? "text-stone-300" : "text-gray-700"
+                                    } mt-2`}
                                 >
-                                    I am also passionate about Cybersecurity, constantly learning and implementing best practices to ensure the security and integrity of web applications.
+                                    I am also passionate about Cybersecurity, constantly learning and
+                                    implementing best practices to ensure the security and integrity of
+                                    web applications.
                                 </motion.p>
                             </div>
-                            <div className="mt-4">
+                            <div className="mt-5">
                                 <motion.a
                                     variants={childVariants}
                                     href="/assets/Projects/Pulkit_Tiwari_Resume.pdf"
@@ -142,6 +128,18 @@ const Hero = ({ isDarkMode }) => {
                                 </motion.a>
                             </div>
                         </motion.div>
+                    </div>
+
+                    {/* Profile Picture */}
+                    <div className="w-full lg:w-1/3 flex justify-center">
+                        <motion.img
+                            src={Profile}
+                            alt="Profile Picture"
+                            className="rounded-lg shadow-lg w-2/3 sm:w-1/2 md:w-3/4 lg:w-full"
+                            initial={{ opacity: 0, x: 100 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 1, delay: 1.5 }}
+                        />
                     </div>
                 </div>
             </div>

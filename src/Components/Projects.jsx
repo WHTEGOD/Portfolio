@@ -34,7 +34,7 @@ const Projects = ({ isDarkMode }) => {
             name: "Amazon.com Clone",
             image: projectImage3,
             description: "A fully functional Amazon e-commerce clone with product listings, cart, and checkout system.",
-            technologies: ["React", "Node.js", "MongoDB", "Express"],
+            technologies: ["HTML","CSS","JavaScript"],
             repo: "https://github.com/WHTEGOD/AmazonClone"
         },
     ];

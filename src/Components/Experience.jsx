@@ -3,7 +3,7 @@ import React from "react";
 const Experience = ({ isDarkMode }) => {
     const experiences = [
         {
-            year: "2024 - Present",
+            year: "Sep 2024 - Present",
             role: "Public Relation Core",
             company: "UPES-CSA",
             description: `As a PR Core Team Member at CSA, I have organized and managed events, enhancing communication and leadership skills.
@@ -13,7 +13,7 @@ const Experience = ({ isDarkMode }) => {
             technologies: ["Communications", "Leadership", "Teamwork", "Networking"],
         },
         {
-            year: "2024 - Present",
+            year: "Sep 2024 - Apr 2025",
             role: "Technical Core",
             company: "UPES-Hypervision",
             description: `As a Technical Core Team Member at Hypervision, I contributed to projects, improving problem-solving and analytical skills.
@@ -25,42 +25,43 @@ const Experience = ({ isDarkMode }) => {
     ];
 
     return (
-        <div id="experience" className="mt-12 mb-12 px-6 lg:px-12 transition-all duration-500">
-            <h2 className={`text-3xl my-20 font-bold mb-8 text-center transition-all ${
+        <div id="experience" className="mt-12 mb-12 px-4 sm:px-6 lg:px-12 transition-all duration-500">
+            <h2 className={`text-3xl my-16 font-bold text-center transition-all ${
                 isDarkMode ? "text-white" : "text-black"
             }`}>
                 Experience
             </h2>
-            <div className="space-y-8">
+            <div className="space-y-12">
                 {experiences.map((experience, index) => (
-                    <div key={index} className="mb-8 flex flex-wrap lg:justify-center">
+                    <div key={index} className="flex flex-col lg:flex-row lg:justify-center lg:items-start gap-4">
                         <div className="w-full lg:w-1/4 text-center lg:text-left">
-                            <p className={`mb-2 text-sm transition-all ${
+                            <p className={`text-sm transition-all ${
                                 isDarkMode ? "text-stone-400" : "text-gray-700"
                             }`}>
                                 {experience.year}
                             </p>
                         </div>
                         <div className="w-full max-w-xl lg:w-3/4">
-                            <h3 className={`mb-2 font-semibold transition-all ${
+                            <h3 className={`text-lg font-semibold mb-2 transition-all ${
                                 isDarkMode ? "text-white" : "text-black"
                             }`}>
-                                {experience.role} - <span className={`text-sm transition-all ${
+                                {experience.role} - 
+                                <span className={`ml-1 text-sm transition-all ${
                                     isDarkMode ? "text-stone-500" : "text-gray-700"
                                 }`}>
                                     {experience.company}
                                 </span>
                             </h3>
-                            <p className={`mb-4 transition-all ${
+                            <p className={`text-sm mb-4 transition-all ${
                                 isDarkMode ? "text-stone-300" : "text-gray-700"
                             }`}>
                                 {experience.description}
                             </p>
-                            <div>
+                            <div className="flex flex-wrap gap-2 mt-2">
                                 {experience.technologies.map((tech, index) => (
                                     <span
                                         key={index}
-                                        className={`mr-2 mt-4 rounded px-2 py-1 text-sm font-medium transition-all ${
+                                        className={`rounded px-2 py-1 text-xs font-medium transition-all ${
                                             isDarkMode ? "bg-stone-900 text-stone-300" : "bg-gray-200 text-gray-900"
                                         }`}
                                     >
