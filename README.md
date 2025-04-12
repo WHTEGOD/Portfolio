@@ -26,15 +26,7 @@ Welcome to my **personal portfolio website**, built to showcase my skills, proje
 - **Animations:** Framer Motion
 - **Icons:** React Icons
 
-Portfolio/
-├── public/
-├── src/
-│   ├── components/
-│   ├── assets/
-│   ├── App.js
-│   └── index.js
-├── package.json
-└── tailwind.config.js
+
 
 ---
 
